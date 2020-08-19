@@ -1,0 +1,27 @@
+{
+    "name": "web-projects",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "client": "npm run start --prefix client",
+        "server": "nodemon server.js",
+        "dev": "concurrently \"npm run server\" \"npm run client\" "
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "apollo-server": "^2.16.1",
+        "bcryptjs": "^2.4.3",
+        "graphql": "^15.3.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.10.0",
+        "mongoose-unique-validator": "^2.0.3",
+        "validator": "^13.1.1"
+    },
+    "devDependencies": {
+        "concurrently": "^5.3.0",
+        "nodemon": "^2.0.4"
+    }
+}
