@@ -70,7 +70,7 @@ module.exports = {
 
                 if (!correctPassword) {
                     errors.password = 'Password is incorrect';
-                    throw new AuthenticationError('auth error mudeer', errors);
+                    throw new UserInputError('auth error mudeer', errors);
                 }
 
                 const token = jwt.sign(
