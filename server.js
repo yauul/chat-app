@@ -7,10 +7,12 @@ const resolvers = require('./graphql/resolvers');
 
 const dbURL = require('./config/db');
 
+const contextMiddleware = require('./util/contextMiddleware');
+
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: (ctx) => ctx,
+    context: contextMiddleware,
 });
 
 mongoose.connect(dbURL.localhost, {

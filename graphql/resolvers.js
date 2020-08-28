@@ -9,21 +9,9 @@ const { UserInputError, AuthenticationError } = require('apollo-server');
 module.exports = {
     Query: {
         getUsers: async (_, args, context) => {
-            let user;
+            let { user } = context;
 
             try {
-                if (context.req && context.req.headers.authorization) {
-                    const token = context.req.headers.authorization.split(
-                        'Bearer '
-                    )[1];
-                    jwt.verify(token, JWT_SECRET, (err, decodedToken) => {
-                        if (err) {
-                            throw new AuthenticationError('Unauthenticated');
-                        }
-                        user = decodedToken;
-                        console.log(user);
-                    });
-                }
                 const users = await User.find({
                     username: { $ne: user.username },
                 });
@@ -141,6 +129,14 @@ module.exports = {
                 return user;
             } catch (error) {
                 throw new UserInputError('Bad Input Dumb Dumb', error);
+            }
+        },
+
+        sendMessage: async (parent, args, context) => {
+            try {
+            } catch (err) {
+                console.log(err);
+                throw err;
             }
         },
     },
